@@ -22,7 +22,7 @@ import sys
 import time
 from IPython import get_ipython
 
-NORMAL_MODE = True  # デバッグしたいときはFalseにする
+DEBUG_MODE = False  # デバッグしたいときはTrueにする
 
 
 class Tex2HatenaTex:
@@ -163,9 +163,11 @@ class Tex2HatenaTex:
                 break
 
         # いっぺんに置き換え 計算量は増えるが、汎用性考慮してこの方法を選択した
-        if NORMAL_MODE:
+        if not DEBUG_MODE:
+            # 通常処理
             s = tuple_subn[0].replace(tmpword, word2)
         else:
+            # デバッグ
             s = tuple_subn[0]  # debug用 tmpwordで確認できる
 
         return s
@@ -193,9 +195,11 @@ class Tex2HatenaTex:
                 break
 
         # いっぺんに置き換え 計算量は増えるが、汎用性考慮してこの方法を選択した
-        if NORMAL_MODE:
+        if not DEBUG_MODE:
+            # 通常処理
             s = tuple_subn[0].replace(tmpword, word2)
         else:
+            # デバッグ処理
             s = tuple_subn[0]  # debug用 tmpwordで確認できる
 
         return s
